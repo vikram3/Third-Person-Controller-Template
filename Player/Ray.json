@@ -1,0 +1,112 @@
+{
+    "animations": {
+        "Idle-loop": "Idle2",
+        "Running Jump": "Jumping",
+        "Running-loop": "Running",
+        "Victory Dance-loop": "Fight Idle",
+        "Walking-loop": "Standing Walk Forward"
+    },
+    "characterName": "Ray",
+    "meshFileName": "Ray.gltf",
+    "nodeName": "StateMachine",
+    "preset_creation_date": "18/7/2020 0:53:53",
+    "preset_creator": "Vinny",
+    "preset_name": "Endless Runner",
+    "preset_version": "1.0",
+    "rootMotionBone": "RootMotion",
+    "rootmotion_bone": "Rootmotion",
+    "state_machine_node": "StateMachine",
+    "states": [
+        {
+            "children_nodes": {},
+            "end": true,
+            "name": "Jumping-loop",
+            "positionX": 699,
+            "positionY": 129.4375,
+            "start": false,
+            "type": "AnimationNodeAnimation"
+        },
+        {
+            "children_nodes": {
+                "points_animations": [
+                    {
+                        "animation": "Idle2-loop",
+                        "index": 0,
+                        "position": -1
+                    },
+                    {
+                        "animation": "Standing Walk Forward-loop",
+                        "index": 1,
+                        "position": 0
+                    },
+                    {
+                        "animation": "Running-loop",
+                        "index": 2,
+                        "position": 1
+                    }
+                ],
+                "points_count": 3
+            },
+            "end": false,
+            "name": "Locomotion",
+            "positionX": 294.5,
+            "positionY": 128.5,
+            "start": true,
+            "type": "AnimationNodeBlendSpace1D"
+        },
+        {
+            "children_nodes": {},
+            "end": false,
+            "name": "Fight Idle-loop",
+            "positionX": 495,
+            "positionY": 234,
+            "start": false,
+            "type": "AnimationNodeAnimation"
+        }
+    ],
+    "states_transitions": [
+        {
+            "autoAdvance": false,
+            "from": "Locomotion",
+            "switchMode": 0,
+            "to": "Jumping-loop",
+            "xFadeTime": 0
+        },
+        {
+            "autoAdvance": true,
+            "from": "Jumping-loop",
+            "switchMode": 2,
+            "to": "Locomotion",
+            "xFadeTime": 0
+        },
+        {
+            "autoAdvance": false,
+            "from": "Locomotion",
+            "switchMode": 1,
+            "to": "Fight Idle-loop",
+            "xFadeTime": 0.3
+        },
+        {
+            "autoAdvance": false,
+            "from": "Jumping-loop",
+            "switchMode": 1,
+            "to": "Fight Idle-loop",
+            "xFadeTime": 0.3
+        },
+        {
+            "autoAdvance": true,
+            "from": "Fight Idle-loop",
+            "switchMode": 2,
+            "to": "Jumping-loop",
+            "xFadeTime": 0
+        },
+        {
+            "autoAdvance": true,
+            "from": "Fight Idle-loop",
+            "switchMode": 2,
+            "to": "Locomotion",
+            "xFadeTime": 0
+        }
+    ],
+    "transition_amount": 6
+}

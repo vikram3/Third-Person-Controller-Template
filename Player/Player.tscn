@@ -1,0 +1,200 @@
+[gd_scene load_steps=48 format=2]
+
+[ext_resource path="res://Player/Ray.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Player/Camera.gd" type="Script" id=2]
+[ext_resource path="res://Player/Player.gd" type="Script" id=3]
+[ext_resource path="res://Player/Animation/Fall A Loop-loop.tres" type="Animation" id=4]
+[ext_resource path="res://Player/Animation/Fight Idle-loop.tres" type="Animation" id=5]
+[ext_resource path="res://Player/Animation/Idle2-loop.tres" type="Animation" id=6]
+[ext_resource path="res://Player/Animation/Illegal Knee-loop.tres" type="Animation" id=7]
+[ext_resource path="res://Player/Animation/Left Strafe-loop.tres" type="Animation" id=8]
+[ext_resource path="res://Player/Animation/Cross Punch-loop.tres" type="Animation" id=9]
+[ext_resource path="res://Player/Animation/Left Strafe Walking-loop.tres" type="Animation" id=10]
+[ext_resource path="res://Player/Animation/Jumping-loop.tres" type="Animation" id=11]
+[ext_resource path="res://Player/Animation/Punching-loop.tres" type="Animation" id=12]
+[ext_resource path="res://Player/Animation/Running Backward-loop.tres" type="Animation" id=13]
+[ext_resource path="res://Player/Animation/Idle-loop.tres" type="Animation" id=14]
+[ext_resource path="res://Player/Animation/Standing Melee Attack Kick Ver 2-loop.tres" type="Animation" id=15]
+[ext_resource path="res://Player/Animation/Running-loop.tres" type="Animation" id=16]
+[ext_resource path="res://Player/Animation/Standing React Large From Right-loop.tres" type="Animation" id=17]
+[ext_resource path="res://Player/Animation/Standing Walk Left-loop.tres" type="Animation" id=18]
+[ext_resource path="res://Player/Animation/Standing Walk Right-loop.tres" type="Animation" id=19]
+[ext_resource path="res://Player/Animation/Walking Backwards-loop.tres" type="Animation" id=20]
+[ext_resource path="res://Player/Animation/Right Strafe-loop.tres" type="Animation" id=21]
+[ext_resource path="res://Player/Animation/Standing Idle-loop.tres" type="Animation" id=22]
+[ext_resource path="res://Player/Animation/Standing React Large From Left-loop.tres" type="Animation" id=23]
+[ext_resource path="res://Player/Animation/Right Strafe Walking-loop.tres" type="Animation" id=24]
+[ext_resource path="res://Player/Animation/Standing Walk Back-loop.tres" type="Animation" id=25]
+[ext_resource path="res://Player/Animation/Walk-loop.tres" type="Animation" id=26]
+[ext_resource path="res://Player/Animation/Standing Walk Forward-loop.tres" type="Animation" id=27]
+
+[sub_resource type="CapsuleShape" id=1]
+radius = 0.290411
+
+[sub_resource type="AnimationNodeAnimation" id=2]
+animation = "Walk-loop"
+
+[sub_resource type="AnimationNodeAnimation" id=3]
+animation = "Running-loop"
+
+[sub_resource type="AnimationNodeAnimation" id=4]
+animation = "Fall A Loop-loop"
+
+[sub_resource type="AnimationNodeAnimation" id=5]
+animation = "Idle2-loop"
+
+[sub_resource type="AnimationNodeTimeScale" id=6]
+
+[sub_resource type="AnimationNodeTransition" id=7]
+input_count = 2
+xfade_time = 0.1
+input_0/name = "aiming"
+input_0/auto_advance = false
+input_1/name = "not_aiming"
+input_1/auto_advance = false
+
+[sub_resource type="AnimationNodeBlend3" id=8]
+
+[sub_resource type="AnimationNodeOneShot" id=9]
+
+[sub_resource type="AnimationNodeTimeScale" id=10]
+
+[sub_resource type="AnimationNodeTimeScale" id=11]
+
+[sub_resource type="AnimationNodeAnimation" id=12]
+animation = "Standing Idle-loop"
+
+[sub_resource type="AnimationNodeAnimation" id=13]
+animation = "Idle2-loop"
+
+[sub_resource type="AnimationNodeAnimation" id=14]
+animation = "Walk-loop"
+
+[sub_resource type="AnimationNodeAnimation" id=15]
+animation = "Walking Backwards-loop"
+
+[sub_resource type="AnimationNodeAnimation" id=16]
+animation = "Right Strafe Walking-loop"
+
+[sub_resource type="AnimationNodeAnimation" id=17]
+animation = "Left Strafe Walking-loop"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id=18]
+blend_point_0/node = SubResource( 12 )
+blend_point_0/pos = Vector2( 0, 0 )
+blend_point_1/node = SubResource( 13 )
+blend_point_1/pos = Vector2( 0, 0 )
+blend_point_2/node = SubResource( 14 )
+blend_point_2/pos = Vector2( 0, 1 )
+blend_point_3/node = SubResource( 15 )
+blend_point_3/pos = Vector2( 0, -1 )
+blend_point_4/node = SubResource( 16 )
+blend_point_4/pos = Vector2( 1, 0 )
+blend_point_5/node = SubResource( 17 )
+blend_point_5/pos = Vector2( -1, 0 )
+
+[sub_resource type="AnimationNodeTimeScale" id=19]
+
+[sub_resource type="AnimationNodeBlendTree" id=20]
+graph_offset = Vector2( -268, 424 )
+nodes/Animation/node = SubResource( 5 )
+nodes/Animation/position = Vector2( -140, 280 )
+"nodes/Animation 2/node" = SubResource( 2 )
+"nodes/Animation 2/position" = Vector2( -340, 380 )
+"nodes/Animation 3/node" = SubResource( 3 )
+"nodes/Animation 3/position" = Vector2( -340, 500 )
+"nodes/Animation 4/node" = SubResource( 4 )
+"nodes/Animation 4/position" = Vector2( 100, 540 )
+nodes/TimeScale/node = SubResource( 6 )
+nodes/TimeScale/position = Vector2( 80, 120 )
+nodes/aim_transition/node = SubResource( 7 )
+nodes/aim_transition/position = Vector2( 340, 240 )
+nodes/iwr_blend/node = SubResource( 8 )
+nodes/iwr_blend/position = Vector2( 80, 360 )
+nodes/output/position = Vector2( 820, 300 )
+nodes/roll/node = SubResource( 9 )
+nodes/roll/position = Vector2( 580, 280 )
+nodes/roll_scale/node = SubResource( 10 )
+nodes/roll_scale/position = Vector2( 380, 440 )
+nodes/run_scale/node = SubResource( 11 )
+nodes/run_scale/position = Vector2( -140, 520 )
+nodes/strafe/node = SubResource( 18 )
+nodes/strafe/position = Vector2( -160, 80 )
+nodes/walk_scale/node = SubResource( 19 )
+nodes/walk_scale/position = Vector2( -140, 400 )
+node_connections = [ "output", 0, "roll", "run_scale", 0, "Animation 3", "TimeScale", 0, "strafe", "roll", 0, "aim_transition", "roll", 1, "roll_scale", "iwr_blend", 0, "Animation", "iwr_blend", 1, "walk_scale", "iwr_blend", 2, "run_scale", "aim_transition", 0, "TimeScale", "aim_transition", 1, "iwr_blend", "walk_scale", 0, "Animation 2", "roll_scale", 0, "Animation 4" ]
+
+[node name="Player" type="KinematicBody"]
+script = ExtResource( 3 )
+
+[node name="Mesh" type="Spatial" parent="."]
+
+[node name="Ray" parent="Mesh" instance=ExtResource( 1 )]
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.803091, 0 )
+shape = SubResource( 1 )
+
+[node name="Camroot" type="Spatial" parent="."]
+script = ExtResource( 2 )
+
+[node name="h" type="Spatial" parent="Camroot"]
+
+[node name="v" type="Spatial" parent="Camroot/h"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.50712, -0.0721309 )
+
+[node name="Camera" type="ClippedCamera" parent="Camroot/h/v"]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, -1.51882 )
+process_mode = 1
+
+[node name="mouse_control_stay_delay" type="Timer" parent="Camroot"]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Mesh/Ray")
+"anims/Cross Punch-loop" = ExtResource( 9 )
+"anims/Fall A Loop-loop" = ExtResource( 4 )
+"anims/Fight Idle-loop" = ExtResource( 5 )
+anims/Idle-loop = ExtResource( 14 )
+anims/Idle2-loop = ExtResource( 6 )
+"anims/Illegal Knee-loop" = ExtResource( 7 )
+anims/Jumping-loop = ExtResource( 11 )
+"anims/Left Strafe Walking-loop" = ExtResource( 10 )
+"anims/Left Strafe-loop" = ExtResource( 8 )
+anims/Punching-loop = ExtResource( 12 )
+"anims/Right Strafe Walking-loop" = ExtResource( 24 )
+"anims/Right Strafe-loop" = ExtResource( 21 )
+"anims/Running Backward-loop" = ExtResource( 13 )
+anims/Running-loop = ExtResource( 16 )
+"anims/Standing Idle-loop" = ExtResource( 22 )
+"anims/Standing Melee Attack Kick Ver 2-loop" = ExtResource( 15 )
+"anims/Standing React Large From Left-loop" = ExtResource( 23 )
+"anims/Standing React Large From Right-loop" = ExtResource( 17 )
+"anims/Standing Walk Back-loop" = ExtResource( 25 )
+"anims/Standing Walk Forward-loop" = ExtResource( 27 )
+"anims/Standing Walk Left-loop" = ExtResource( 18 )
+"anims/Standing Walk Right-loop" = ExtResource( 19 )
+anims/Walk-loop = ExtResource( 26 )
+"anims/Walking Backwards-loop" = ExtResource( 20 )
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource( 20 )
+anim_player = NodePath("../AnimationPlayer")
+active = true
+parameters/TimeScale/scale = 1.0
+parameters/aim_transition/current = 0
+parameters/iwr_blend/blend_amount = 0.0
+parameters/roll/active = false
+parameters/roll_scale/scale = 2.0
+parameters/run_scale/scale = 1.0
+parameters/strafe/blend_position = Vector2( 0, 0 )
+parameters/walk_scale/scale = 1.0
+
+[node name="roll_window" type="Timer" parent="."]
+process_mode = 0
+wait_time = 0.5
+one_shot = true
+
+[node name="roll_timer" type="Timer" parent="."]
+process_mode = 0
+wait_time = 0.2
+one_shot = true
